@@ -1,0 +1,42 @@
+<form [formGroup]="loginForm">
+  <div class="wrapper">
+
+    <div class="login-form">
+      <mat-card-title>Login</mat-card-title>
+    </div>
+      <div class="form-control">
+        <div class="example-container">
+          <div class="name">
+            <mat-form-field>
+              <mat-label>Enter Email</mat-label>
+              <input matInput type="email" placeholder="Username" required formControlName="email">
+              <mat-error *ngIf="loginForm.get('email').errors  ">
+              Min 3 symbols
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="password">
+            <mat-form-field>
+              <mat-label>Enter Password</mat-label>
+              <input id="password" matInput placeholder="Password" type="Password" name="password" required formControlName="password" [type]="hide ? 'password' : 'text'">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error >
+                Min 5 symbols
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+    </div>
+    <div class="login-submit">
+      <button mat-raised-button
+              (click)="tryLogin()"
+              [disabled]="!loginForm.valid"
+      >Login</button>
+    </div >
+  <div class="redirect-registr">
+    <button mat-raised-button [routerLink]="['/registr']">
+    Registration
+    </button>
+</div>
+  </div>
+</form>

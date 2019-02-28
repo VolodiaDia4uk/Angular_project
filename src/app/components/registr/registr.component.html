@@ -1,0 +1,59 @@
+<form [formGroup]="registrForm">
+  <div class="wrapper">
+
+    <div class="login-form">
+      <mat-card-title>Registration</mat-card-title>
+    </div>
+    <div class="form-control">
+      <div class="example-container">
+        <div class="firstName">
+          <mat-form-field>
+            <mat-label>Enter Firstname</mat-label>
+            <input matInput placeholder="Firstname" required formControlName="firstName">
+            <mat-error *ngIf="registrForm.get('firstName').errors  ">
+            Firstname is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="lastName">
+          <mat-form-field>
+            <mat-label>Enter Lastname</mat-label>
+            <input matInput placeholder="Lastname" required formControlName="lastName">
+            <mat-error *ngIf="registrForm.get('lastName').errors  ">
+              Lastname is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="email">
+          <mat-form-field>
+            <mat-label>Enter Email</mat-label>
+            <input matInput placeholder="Email" required formControlName="email">
+          </mat-form-field>
+        </div>
+        <div class="username">
+          <mat-form-field>
+            <mat-label>Enter Username</mat-label>
+            <input matInput placeholder="username" required formControlName="username">
+          </mat-form-field>
+        </div>
+        <div class="registr-password">
+          <mat-form-field>
+            <mat-label>Enter Password</mat-label>
+            <input  matInput placeholder="Password" type="Password" name="password" required formControlName="password" >
+          </mat-form-field>
+        </div>
+        </div>
+      </div>
+    <div class="login-submit">
+      <button mat-raised-button
+              [disabled]="!registrForm.valid"
+              (click)="tryRegistr()"
+      >Registration</button>
+    </div >
+    <div class="redirect-registr">
+      <button mat-raised-button [routerLink]="['/login']">
+        Login
+      </button>
+    </div>
+  </div>
+</form>
